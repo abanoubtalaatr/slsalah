@@ -282,7 +282,10 @@ Route::post("/business-model-post", [
 ]);
 
 Route::get("/", [FrontendController::class, "home"]);
-Route::get("/pricing", [FrontendController::class, "pricing"]);
+
+Route::get("/pricing", [FrontendController::class, "pricing"])->middleware('auth');
+Route::get('/subscribe', [FrontendController::class,'subscribe'])->middleware('auth');
+
 Route::get('/privacy', [FrontendController::class,'privacy']);
 Route::get("/termsandconditions", [FrontendController::class, "termsCondition"]);
 Route::get("/cookie-policy", [FrontendController::class, "cookiePolicy"]);

@@ -57,8 +57,6 @@
 
                                         @endif
 
-
-
                                     </div>
                                     <div class="card-footer text-center pt-0">
                                         <a href="/signup" type="button"

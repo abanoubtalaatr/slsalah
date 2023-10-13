@@ -15,7 +15,9 @@
                                 $total_second_year = 0;
                                 $total_third_year = 0;
                             @endphp
-                            <div style="text-align: center;">{{ $projectRevenuePlanning->name }}</div>
+
+                            <div style="text-align: center;" class="fa-2x mt-4"><span class=" px-2 ">{{ $projectRevenuePlanning->name }}</span></div>
+
                             <table class="table align-items-center mb-0">
                                 <thead>
                                 <tr>
@@ -36,6 +38,8 @@
                                             $total_third_year += (($source->total_revenue * ($planningRevenueOperatingAssumptions->first_year/100)) + ($source->total_revenue * ($planningRevenueOperatingAssumptions->second_year/100)) + ((($source->total_revenue * ($planningRevenueOperatingAssumptions->first_year/100)) + ($source->total_revenue * ($planningRevenueOperatingAssumptions->second_year/100))) * ($planningRevenueOperatingAssumptions->third_year/100)));
                                         */
                                     @endphp
+
+
                                     <tr>
                                         <td>{{ $source->name }}</td>
                                         <td>{{ $source->unit }}</td>
@@ -66,14 +70,15 @@
 {{--                                        <td>{{ ($source->total_revenue * ($planningRevenueOperatingAssumptions->first_year/100)) + ($source->total_revenue * ($planningRevenueOperatingAssumptions->second_year/100)) }} SAR</td>--}}
 {{--                                        <td>{{ ($source->total_revenue * ($planningRevenueOperatingAssumptions->first_year/100)) + ($source->total_revenue * ($planningRevenueOperatingAssumptions->second_year/100)) + ((($source->total_revenue * ($planningRevenueOperatingAssumptions->first_year/100)) + ($source->total_revenue * ($planningRevenueOperatingAssumptions->second_year/100))) * ($planningRevenueOperatingAssumptions->third_year/100)) }} SAR</td>--}}
                                     </tr>
+
                                 @endforeach
                                 </tbody>
                             </table>
                         @endforeach
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12" style="text-align: center">{{ __('total') }}</div>
+                    <div class="row mt-4" >
+                        <div class="col-md-12 my-2" style="text-align: center">{{ __('total') }}</div>
                         <div class="col-md-2" style="background-color: #DDD;">{{ __('first_year') }}</div>
                         <div class="col-md-2 text-muted">{{ formatCurrency(\App\Models\ProjectRevenuePlanning::calcTotalRevenueFirstYear() ,getWorkspaceCurrency($settings))}}</div>
                         <div class="col-md-2" style="background-color: #DDD;">{{ __('second_year') }}</div>

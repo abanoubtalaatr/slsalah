@@ -54,7 +54,10 @@ class FinncialReportController extends BaseController
             ->first();
         $selected_navigation = 'statement_of_cash_flows';
         $calc_total = $planningRevenueOperatingAssumptions->calc_total;
-
+        foreach ($calc_total as &$value) {
+            $value = str_replace('$', ' SAR ', $value);
+            $value = str_replace('-', ' <strong>&ndash;</strong>', $value);
+        }
         return view('planning_revenue_operating_assumptions.statement_of_cash_flows',
             compact('calc_total','planningRevenueOperatingAssumptions','planningFinancialAssumption','planningCostAssumption','all_revenues_forecasting','all_revenues_costs_forecasting', 'selected_navigation'));
     }
